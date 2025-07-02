@@ -110,7 +110,7 @@ const sidebarItems = [
 		subtitle: "Reach Out To Wonderla Team",
 		icon: (
 			<Image
-				src="https://d22pimhl2qmbj7.cloudfront.net/public/group_booking_1adcd0978a.svg?w=96&q=75"
+				src="https://d22pimhl2qmbj7.cloudfront.net/public/tour_portal_c097403085.svg?w=48&q=75"
 				className="w-8 h-8"
 				alt=""
 				width={32}
@@ -120,22 +120,22 @@ const sidebarItems = [
 		type: "button-blue",
 	},
 	{
-		title: "School & College",
+		title: "How To Reach",
 		subtitle: "Reach Out To Wonderla Team",
 		icon: (
 			<Image
-				src="https://d22pimhl2qmbj7.cloudfront.net/public/group_booking_1adcd0978a.svg?w=96&q=75"
+				src="https://d22pimhl2qmbj7.cloudfront.net/public/how_to_reach_f52afe8765.svg?w=48&q=75"
 				className="w-8 h-8"
 				alt=""
 				width={32}
 				height={32}
 			/>
 		),
-		type: "button-blue",
+		type: "button-yellow",
 	},
 	{
 		title: "About Us",
-		subtitle: "Know All About Wonderla",
+		subtitle: "Directions, Routes & Travel Options",
 		icon: (
 			<Image
 				src="https://d22pimhl2qmbj7.cloudfront.net/public/about_us_3ae10e9512.svg?w=48&q=75"
@@ -242,7 +242,7 @@ const Sidebar = ({
 					{sidebarItems.map((item) => {
 						if (item.type === "accordion") {
 							return (
-								<div key={item.title} className="py-2">
+								<div key={item.title} className="py-5 border-b-[0.5] border-gray-300 ">
 									<div
 										className="flex justify-between items-center cursor-pointer"
 										onClick={() => toggleAccordion(item.title)}
@@ -253,7 +253,7 @@ const Sidebar = ({
 												<p className="font-semibold text-gray-800">
 													{item.title}
 												</p>
-												<p className="text-sm text-gray-500">
+												<p className="text-xs text-gray-500">
 													{item.subtitle}
 												</p>
 											</div>
@@ -366,7 +366,7 @@ const Sidebar = ({
 										{item.icon}
 										<div>
 											<p className="font-bold">{item.title}</p>
-											<p className="text-sm text-gray-600">{item.subtitle}</p>
+											<p className="text-xs">{item.subtitle}</p>
 										</div>
 									</button>
 								</div>
@@ -375,14 +375,14 @@ const Sidebar = ({
 							return (
 								<div
 									key={item.title}
-									className="flex items-center space-x-4 py-3 cursor-pointer hover:bg-gray-100 rounded-lg p-2"
+									className="flex items-center space-x-4 py-3 cursor-pointer hover:bg-gray-100 p-2 border-b-[0.5] border-gray-300"
 								>
 									{item.icon}
 									<div>
 										<p className="font-semibold text-gray-800">
 											{item.title}
 										</p>
-										<p className="text-sm text-gray-500">
+										<p className="text-xs text-gray-500">
 											{item.subtitle}
 										</p>
 									</div>
