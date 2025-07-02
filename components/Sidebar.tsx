@@ -250,7 +250,7 @@ const Sidebar = ({
 										<div className="flex items-center space-x-4">
 											{item.icon}
 											<div>
-												<p className="font-semibold text-gray-800">
+												<p className="font-semibold text-gray-800 text-xl">
 													{item.title}
 												</p>
 												<p className="text-xs text-gray-500">
@@ -365,7 +365,7 @@ const Sidebar = ({
 									>
 										{item.icon}
 										<div>
-											<p className="font-bold">{item.title}</p>
+											<p className="font-bold text-xl">{item.title}</p>
 											<p className="text-xs">{item.subtitle}</p>
 										</div>
 									</button>
@@ -379,7 +379,7 @@ const Sidebar = ({
 								>
 									{item.icon}
 									<div>
-										<p className="font-semibold text-gray-800">
+										<p className="font-semibold text-gray-800 text-xl">
 											{item.title}
 										</p>
 										<p className="text-xs text-gray-500">
