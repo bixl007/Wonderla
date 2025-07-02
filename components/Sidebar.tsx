@@ -196,210 +196,221 @@ const Sidebar = ({
 	};
 
 	return (
-		<div
-			className={`fixed top-0 right-0 h-full w-96 bg-white shadow-lg transform transition-transform duration-300 z-20 flex flex-col ${
-				isOpen ? "translate-x-0" : "translate-x-full"
-			}`}
-		>
-			<div className="flex justify-between items-center p-4 ">
-				<Image
-					src="https://d22pimhl2qmbj7.cloudfront.net/public/Main_Logo_0ad2299b54.png?w=128&q=75"
-					alt="logo"
-					className="h-12"
-					width={128}
-					height={48}
-				/>
-				<button
-					onClick={onClose}
-					className="text-gray-500 hover:text-gray-800 border-[0.5] p-1 rounded-xl"
-				>
-					<svg
-						width="16"
-						height="16"
-						viewBox="0 0 24 24"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
+		<>
+			<div
+				className={`fixed inset-0 bg-black z-10 transition-opacity duration-300 ${
+					isOpen ? "opacity-35" : "opacity-0 pointer-events-none"
+				}`}
+				onClick={onClose}
+			/>
+			<div
+				className={`fixed top-0 right-0 h-full w-96 bg-white shadow-lg transform transition-transform duration-300 z-20 flex flex-col ${
+					isOpen ? "translate-x-0" : "translate-x-full"
+				}`}
+			>
+				<div className="flex justify-between items-center p-4 ">
+					<Image
+						src="https://d22pimhl2qmbj7.cloudfront.net/public/Main_Logo_0ad2299b54.png?w=128&q=75"
+						alt="logo"
+						className="h-12"
+						width={128}
+						height={48}
+					/>
+					<button
+						onClick={onClose}
+						className="text-gray-500 hover:text-gray-800 border-[0.5] p-1 rounded-xl"
 					>
-						<path
-							d="M18 6L6 18"
-							stroke="currentColor"
-							strokeWidth="2"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-						/>
-						<path
-							d="M6 6L18 18"
-							stroke="currentColor"
-							strokeWidth="2"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-						/>
-					</svg>
-				</button>
-			</div>
-			<div className="overflow-y-auto">
-				<div className="p-4">
-					{sidebarItems.map((item) => {
-						if (item.type === "accordion") {
-							return (
-								<div key={item.title} className="py-5 border-b-[0.5] border-gray-300 ">
+						<svg
+							width="16"
+							height="16"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<path
+								d="M18 6L6 18"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+							<path
+								d="M6 6L18 18"
+								stroke="currentColor"
+								strokeWidth="2"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+							/>
+						</svg>
+					</button>
+				</div>
+				<div className="overflow-y-auto">
+					<div className="p-4">
+						{sidebarItems.map((item) => {
+							if (item.type === "accordion") {
+								return (
 									<div
-										className="flex justify-between items-center cursor-pointer"
-										onClick={() => toggleAccordion(item.title)}
+										key={item.title}
+										className="py-5 border-b-[0.5] border-gray-300 "
 									>
-										<div className="flex items-center space-x-4">
-											{item.icon}
-											<div>
-												<p className="font-semibold text-gray-800 text-xl">
-													{item.title}
-												</p>
-												<p className="text-xs text-gray-500">
-													{item.subtitle}
-												</p>
+										<div
+											className="flex justify-between items-center cursor-pointer"
+											onClick={() => toggleAccordion(item.title)}
+										>
+											<div className="flex items-center space-x-4">
+												{item.icon}
+												<div>
+													<p className="font-semibold text-gray-800 text-xl">
+														{item.title}
+													</p>
+													<p className="text-xs text-gray-500">
+														{item.subtitle}
+													</p>
+												</div>
 											</div>
+											<svg
+												width="16"
+												height="16"
+												viewBox="0 0 20 20"
+												fill="currentColor"
+												className={`transition-transform duration-300 ${
+													openAccordion === item.title
+														? "rotate-180"
+														: ""
+												}`}
+											>
+												<path
+													fillRule="evenodd"
+													d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+													clipRule="evenodd"
+												/>
+											</svg>
 										</div>
-										<svg
-											width="16"
-											height="16"
-											viewBox="0 0 20 20"
-											fill="currentColor"
-											className={`transition-transform duration-300 ${
+										<div
+											className={`overflow-hidden transition-all duration-500 ease-in-out ${
 												openAccordion === item.title
-													? "rotate-180"
-													: ""
+													? "max-h-screen"
+													: "max-h-0"
 											}`}
 										>
-											<path
-												fillRule="evenodd"
-												d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-												clipRule="evenodd"
-											/>
-										</svg>
+											{item.content && (
+												<div className="pl-10 pt-2">
+													{item.title === "Parks" && (
+														<div className="grid grid-cols-2 gap-4 mt-2">
+															{(item.content as { name: string; image: string }[]).map(
+																(park) => (
+																	<div
+																		key={park.name}
+																		className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+																	>
+																		<Image
+																			src={park.image}
+																			alt={park.name}
+																			className="w-16 h-16 rounded-full object-cover"
+																			width={64}
+																			height={64}
+																		/>
+																		<p className="text-sm font-semibold">
+																			{park.name}
+																		</p>
+																	</div>
+																)
+															)}
+														</div>
+													)}
+													{item.title === "Resorts" && (
+														<div className="grid grid-cols-2 gap-4 mt-2">
+															{(item.content as { name: string; image: string }[]).map(
+																(resort) => (
+																	<div
+																		key={resort.name}
+																		className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-gray-100 cursor-pointer"
+																	>
+																		<Image
+																			src={resort.image}
+																			alt={resort.name}
+																			className="w-16 h-16 rounded-full object-cover"
+																			width={64}
+																			height={64}
+																		/>
+																		<p className="text-sm font-semibold">
+																			{resort.name}
+																		</p>
+																	</div>
+																)
+															)}
+														</div>
+													)}
+													{item.title === "Quick Links" && (
+														<div className="flex flex-col gap-3 text-sm font-medium">
+															{(item.content as string[]).map((link) => (
+																<a
+																	key={link}
+																	href="#"
+																	className="text-gray-600 rounded-lg"
+																>
+																	{link}
+																</a>
+															))}
+														</div>
+													)}
+												</div>
+											)}
+										</div>
 									</div>
-									<div
-										className={`overflow-hidden transition-all duration-500 ease-in-out ${
-											openAccordion === item.title
-												? "max-h-screen"
-												: "max-h-0"
-										}`}
-									>
-										{item.content && (
-											<div className="pl-10 pt-2">
-												{item.title === "Parks" && (
-													<div className="grid grid-cols-2 gap-4 mt-2">
-														{(item.content as { name: string; image: string }[]).map(
-															(park) => (
-																<div
-																	key={park.name}
-																	className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-gray-100 cursor-pointer"
-																>
-																	<Image
-																		src={park.image}
-																		alt={park.name}
-																		className="w-16 h-16 rounded-full object-cover"
-																		width={64}
-																		height={64}
-																	/>
-																	<p className="text-sm font-semibold">
-																		{park.name}
-																	</p>
-																</div>
-															)
-														)}
-													</div>
-												)}
-												{item.title === "Resorts" && (
-													<div className="grid grid-cols-2 gap-4 mt-2">
-														{(item.content as { name: string; image: string }[]).map(
-															(resort) => (
-																<div
-																	key={resort.name}
-																	className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-gray-100 cursor-pointer"
-																>
-																	<Image
-																		src={resort.image}
-																		alt={resort.name}
-																		className="w-16 h-16 rounded-full object-cover"
-																		width={64}
-																		height={64}
-																	/>
-																	<p className="text-sm font-semibold">
-																		{resort.name}
-																	</p>
-																</div>
-															)
-														)}
-													</div>
-												)}
-												{item.title === "Quick Links" && (
-													<div className="flex flex-col gap-3 text-sm font-medium">
-														{(item.content as string[]).map((link) => (
-															<a
-																key={link}
-																href="#"
-																className="text-gray-600 rounded-lg"
-															>
-																{link}
-															</a>
-														))}
-													</div>
-												)}
+								);
+							} else if (item.type.startsWith("button")) {
+								const bgColor =
+									item.type === "button-yellow"
+										? "bg-yellow-400"
+										: "bg-blue-600";
+								const textColor =
+									item.type === "button-yellow"
+										? "text-black"
+										: "text-white";
+								return (
+									<div key={item.title} className="py-2">
+										<button
+											className={`w-full text-left p-3 rounded-lg flex items-center space-x-4 ${bgColor} ${textColor}`}
+										>
+											{item.icon}
+											<div>
+												<p className="font-bold text-xl">{item.title}</p>
+												<p className="text-xs">{item.subtitle}</p>
 											</div>
-										)}
+										</button>
 									</div>
-								</div>
-							);
-						} else if (item.type.startsWith("button")) {
-							const bgColor =
-								item.type === "button-yellow"
-									? "bg-yellow-400"
-									: "bg-blue-600";
-							const textColor =
-								item.type === "button-yellow"
-									? "text-black"
-									: "text-white";
-							return (
-								<div key={item.title} className="py-2">
-									<button
-										className={`w-full text-left p-3 rounded-lg flex items-center space-x-4 ${bgColor} ${textColor}`}
+								);
+							} else {
+								return (
+									<div
+										key={item.title}
+										className="flex items-center space-x-4 py-3 cursor-pointer hover:bg-gray-100 p-2 border-b-[0.5] border-gray-300"
 									>
 										{item.icon}
 										<div>
-											<p className="font-bold text-xl">{item.title}</p>
-											<p className="text-xs">{item.subtitle}</p>
+											<p className="font-semibold text-gray-800 text-xl">
+												{item.title}
+											</p>
+											<p className="text-xs text-gray-500">
+												{item.subtitle}
+											</p>
 										</div>
-									</button>
-								</div>
-							);
-						} else {
-							return (
-								<div
-									key={item.title}
-									className="flex items-center space-x-4 py-3 cursor-pointer hover:bg-gray-100 p-2 border-b-[0.5] border-gray-300"
-								>
-									{item.icon}
-									<div>
-										<p className="font-semibold text-gray-800 text-xl">
-											{item.title}
-										</p>
-										<p className="text-xs text-gray-500">
-											{item.subtitle}
-										</p>
 									</div>
-								</div>
-							);
-						}
-					})}
+								);
+							}
+						})}
+					</div>
 				</div>
+				<Image
+					src="https://www.wonderla.com/_next/static/media/header-drawer-bottom-icon.0d0f9f60.png?w=640&q=75"
+					alt="ride"
+					className="absolute bottom-0 right-0 w-45  opacity-80 -z-10"
+					width={640}
+					height={75}
+				/>
 			</div>
-			<Image
-				src="https://www.wonderla.com/_next/static/media/header-drawer-bottom-icon.0d0f9f60.png?w=640&q=75"
-				alt="ride"
-				className="absolute bottom-0 right-0 w-45  opacity-80 -z-10"
-				width={640}
-				height={75}
-			/>
-		</div>
+		</>
 	);
 };
 
