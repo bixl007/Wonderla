@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import Image from "next/image";
 
@@ -31,7 +32,7 @@ type DropdownProps = {
 };
 
 export const ParkDropdown = ({ items }: DropdownProps) => (
-  <div className="absolute top-full mt-2 w-64 bg-white rounded-xl shadow-lg p-4 z-10">
+  <div className="absolute top-full w-64 bg-white rounded-xl shadow-lg p-4 z-10">
     {items.map((item) => (
       <DropdownItem key={item.name} {...item} />
     ))}
@@ -39,7 +40,7 @@ export const ParkDropdown = ({ items }: DropdownProps) => (
 );
 
 export const ResortDropdown = ({ items, title }: DropdownProps) => (
-  <div className="absolute top-full mt-2 w-64 bg-white rounded-xl shadow-lg p-4 z-10">
+  <div className="absolute top-full w-64 bg-white rounded-xl shadow-lg p-4 z-10">
     <div className="flex items-center space-x-2 mb-3">
       <svg width="18" height="18" fill="none" viewBox="0 0 24 24">
         <path

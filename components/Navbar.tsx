@@ -57,7 +57,7 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex space-x-8 items-center">
           <div
-            className="relative"
+            className="relative pt-2"
             onMouseEnter={() => setParkOpen(true)}
             onMouseLeave={() => setParkOpen(false)}
           >
@@ -98,7 +98,7 @@ const Navbar = () => {
           </div>
 
           <div
-            className="relative"
+            className="relative pt-2"
             onMouseEnter={() => setResortOpen(true)}
             onMouseLeave={() => setResortOpen(false)}
           >
