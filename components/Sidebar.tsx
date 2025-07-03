@@ -196,7 +196,7 @@ const Sidebar = ({
 	};
 
 	return (
-		<>
+		<div className="relative">
 			<div
 				className={`fixed inset-0 bg-black z-10 transition-opacity duration-300 ${
 					isOpen ? "opacity-35" : "opacity-0 pointer-events-none"
@@ -371,7 +371,7 @@ const Sidebar = ({
 								return (
 									<div key={item.title} className="py-2">
 										<button
-											className={`w-full text-left p-3 rounded-lg flex items-center space-x-4 ${bgColor} ${textColor}`}
+											className={`w-full text-left p-3 rounded-lg flex cursor-pointer items-center space-x-4 ${bgColor} ${textColor}`}
 										>
 											{item.icon}
 											<div>
@@ -410,7 +410,7 @@ const Sidebar = ({
 					height={75}
 				/>
 			</div>
-		</>
+		</div>
 	);
 };
 

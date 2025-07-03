@@ -1,9 +1,13 @@
+import { MarqueeRides } from "./MarqueeRides"
 import Navbar from "./Navbar"
+import RidesPreview from "./RidesPreview"
 
 function RidesSection() {
   return (
-    <div className="bg-[#22304A] h-screen">
+    <div>
         <Navbar />
+        <RidesPreview />
+        <MarqueeRides />
     </div>
   )
 }

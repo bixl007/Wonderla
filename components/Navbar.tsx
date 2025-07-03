@@ -44,7 +44,7 @@ const Navbar = () => {
     },
   ];
   return (
-    <div className=" fixed top-8 w-screen">
+    <div className=" fixed top-8 w-screen z-50">
       <div className="flex justify-between items-center py-3 px-6 bg-white shadow-md rounded-xl mx-auto max-w-[95%] my-3">
         <div>
           <Image
